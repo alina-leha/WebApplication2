@@ -1,0 +1,61 @@
+﻿@model WebApplication1.Models.user
+@{
+    ViewData["Title"] = "Privacy";
+}
+
+<form method="post" action="/home/privacy">
+    <input type="hidden" name="PhoneId" value="@ViewBag.Id" />
+    <table>
+        <tbody>
+            <tr>
+                <td>Id</td>
+                <td><input type="text" name="Id" /></td>
+            </tr>
+            <tr>
+                <td>Firstname</td>
+                <td><input type="text" name="Firstname" /></td>
+            </tr>
+            <tr>
+                <td>Lastname</td>
+                <td><input type="text" name="Lastname" /></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="Phone" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Зарегистрироваться" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        @if(ViewBag.users != null && ViewBag.users.Count >= 1)
+            {
+        
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in ViewBag.users)
+                    {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Firstname</td>
+                        <td>@user.Lastname</td>
+                        <td>@user.Phone</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+    </div>
+
+</form>
